@@ -1,0 +1,68 @@
+{
+  "name": "api-set-up",
+  "version": "1.0.0",
+  "description": "api-postgres",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon --exec 'npx eslint src && node node_modules/.bin/babel-node src/server/index.js'",
+    "pretest": "NODE_ENV=test yarn db:migrate",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "test": "jest  src/ --no-cache --detectOpenHandles --runInBand --forceExit --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikenthiwa/api-set-up.git"
+  },
+  "author": "Michael Nthiwa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikenthiwa/api-set-up/issues"
+  },
+  "homepage": "https://github.com/mikenthiwa/api-set-up#readme",
+  "dependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/register": "^7.6.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.7.0",
+    "nodemon": "^1.19.3",
+    "pg": "^7.12.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.19.4",
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/?(*.)(spec|test)js",
+      "<rootDir>/src/**/?(*.)(spec|test).js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/src/database/migrations",
+      "<rootDir>/src/database/seeders",
+      "<rootDir>/src/database/models/index.js",
+      "<rootDir>/src/middlewares/index.js",
+      "<rootDir>/src/modules/requests/__tests__/mocks",
+      "<rootDir>/src/modules/travelChecklist/CloudinaryDeletion.js"
+    ]
+  }
+}
